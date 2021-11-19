@@ -1,0 +1,24 @@
+﻿<h2>Registration</h2>
+<br />
+<br />
+
+<form method="post" action=" /Registration/Index">
+
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div class="col-md-6">
+        <label class="form-label">Email</label><br />
+        <input type="text" name="@nameof(RegistrationViewModel.Email)" /> <br />
+    </div>
+    <br />
+    <div class="col-md-6">
+        <label class="form-label">Password</label><br />
+        <input type="text" name="@nameof(RegistrationViewModel.UserPassword)" /> <br />
+    </div>
+    <br />
+    <div class="col-md-6">
+        <label class="form-label">Confrim your password</label><br />
+        <input type="text" name="@nameof(RegistrationViewModel.ConfirmPassword)" /><br />
+    </div>
+    <br />
+    <p><input type="submit" class="btn btn-primary"></p>
+</form>

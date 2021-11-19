@@ -1,0 +1,39 @@
+﻿@model ProfileModel
+
+<form method="post" action=" /Profile/Create">
+    @using (Html.BeginForm("Create", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <p style="color:black; font-size:14px"> Имя:</p> @Html.TextBoxFor(m => m.FirstName)
+        <br />
+        <br />
+        <p style="color:black; font-size:14px"> Фамилия:</p> @Html.TextBoxFor(m => m.LastName)
+        <br />
+        <br />
+        <p style="color:black; font-size:14px"> Возраст:</p> @Html.TextBoxFor(m => m.Age)
+        <br />
+        <br />
+        <p style="color:black; font-size:14px"> Пол:</p>
+
+        @Html.DropDownListFor(m => m.Sex, Enum.GetNames(typeof(DatingApp.Common.Sex)).Select(e => new SelectListItem { Value = e, Text = e }))
+        <br />
+        <br />
+        <p style="color:black; font-size:14px"> City:</p>
+
+        @Html.DropDownListFor(m => m.CityId, (ViewBag.Cities as DatingApp.BusinesLogic.BusinessModel.LookupValueModel[]).Select(e => new SelectListItem { Value = e.Id.ToString(), Text = e.Title }))
+        <br />
+        <br />
+        <p style="color:black; font-size:14px"> Ориентация:</p>
+
+        @Html.DropDownListFor(m => m.Orientation, Enum.GetNames(typeof(DatingApp.Common.Orientations)).Select(e => new SelectListItem { Value = e, Text = e }))
+        <br />
+        <br />
+        <p style="color:black; font-size:14px"> О себе:</p> @Html.TextBoxFor(m => m.AboutMe)
+        <br />
+        <br />
+        <input type="file" name="DataImage" class="custom-file-input" />
+        <br />
+        <br />
+        <p><input type="submit" value="Create" class="btn btn-primary"></p>
+    }
+</form>

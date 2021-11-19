@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DatingApp.Common\DatingApp.Common.csproj" />
+    <ProjectReference Include="..\DatingApp.DataAccsessLayer\DatingApp.DataAccessLayer.csproj" />
+  </ItemGroup>
+
+</Project>

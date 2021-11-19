@@ -1,0 +1,29 @@
+﻿<h2>Search</h2>
+@model SearchViewModel
+<form method="post" action=" Search/ResultSearch/">
+    @using (Html.BeginForm("Create", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <p style="color:black; font-size:14px"> First Name:</p> @Html.TextBoxFor(m => m.FirstName)
+        <br />
+
+        <p style="color:black; font-size:14px"> Age From:</p> @Html.TextBoxFor(m => m.AgeFrom)
+        <br />
+        <p style="color:black; font-size:14px"> Age To:</p> @Html.TextBoxFor(m => m.AgeTo)
+        <br />
+        <p style="color:black; font-size:14px"> City:</p> @Html.TextBoxFor(m => m.CityId)
+        <br />
+        <br />
+        <p style="color:black; font-size:14px"> Sex:</p>
+
+        @Html.DropDownListFor(m => m.Sex, Enum.GetNames(typeof(DatingApp.Common.Sex)).Select(e => new SelectListItem { Value = e, Text = e }))
+        <br />
+        <br />
+        <p style="color:black; font-size:14px"> Orientation:</p>
+
+        @Html.DropDownListFor(m => m.Orientation, Enum.GetNames(typeof(DatingApp.Common.Orientations)).Select(e => new SelectListItem { Value = e, Text = e }))
+        <br />
+        <br />
+        <p><input type="submit" value="Search" class="btn btn-primary"></p>
+    }
+</form>
