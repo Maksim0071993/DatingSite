@@ -1,0 +1,22 @@
+﻿@model ChatViewModel
+    <html>
+    <head>
+        <title>Отправка сообщений</title>
+    </head>
+    <body>
+        <form method="post" action=" /Chat/SendMessage">
+            <label>Выбор получателя сообщения</label>
+            <br />
+            @Html.DropDownListFor(model => model.RecepientId, ViewBag.AllRecepient as SelectList)
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            @Html.TextAreaFor(model => model.TextMessage)
+            
+            <p><input type="submit" value="Отправить сообщение" class="btn-primary"></p>
+        </form>
+    </body>
+</html>

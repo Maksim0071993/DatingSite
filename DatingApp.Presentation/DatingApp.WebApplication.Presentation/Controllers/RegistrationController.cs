@@ -43,6 +43,10 @@ namespace DatingApp.WebApplication.Presentation.Controllers
             {
                 ModelState.AddModelError("", "Пароли должны совпадать");
             }
+            else if(model.Email == null)
+            {
+                ModelState.AddModelError("", "Поле 'Email' должно быть заполнено");
+            }
             else
             {
                 var result = _registrationService.Register(model.Email, model.UserPassword);

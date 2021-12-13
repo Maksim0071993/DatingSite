@@ -1,0 +1,29 @@
+﻿@model List<DatingApp.BusinesLogic.BusinessModel.MessageModel>
+<html>
+<head>
+    <title> OutgoingMessage</title>
+</head>
+<body>
+
+    <form method="get" action=" /Chat/OutgoingMessage">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Имя получателя</th>
+                    <th scope="col">Текст сообщения</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var name in Model)
+                {
+                    <tr class="container">
+                        <td>@name.RecipientName</td>
+                        <td>@name.TextMessage</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

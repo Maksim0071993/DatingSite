@@ -3,6 +3,7 @@ using DatingApp.BusinesLogic.Services.Interfaces;
 using DatingApp.DataAccessLayer.Models;
 using DatingApp.DataAccessLayer.Repositories;
 using DatingApp.DataAccessLayer.Repositories.Interfaces;
+using DatingApp.WebApplication.Presentation.SignalR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace DatingApp.WebApplication.Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddSignalR();
             services.AddControllersWithViews();
             services.AddAuthentication();
             services.AddAuthorization();
@@ -46,7 +48,7 @@ namespace DatingApp.WebApplication.Presentation
             services.AddScoped<ILookupValueService, LookupValueService>();
             services.AddScoped<ILookupTypeService, LookupTypeService>();
             services.AddScoped<DatingAppWinFormsContext, DatingAppWinFormsContext>();
-
+            services.AddSignalR();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
@@ -83,8 +85,10 @@ namespace DatingApp.WebApplication.Presentation
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Registration}/{action=Index}/{id?}");
-                
+                endpoints.MapHub<ChatHub>("/Chat");
+
             });
+            
         }
     }
 }

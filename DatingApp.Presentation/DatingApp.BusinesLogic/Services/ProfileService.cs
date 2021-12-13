@@ -19,13 +19,14 @@ namespace DatingApp.BusinesLogic.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public void CreateProfile(ProfileModel model)
+        public int CreateProfile(ProfileModel model)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<ProfileModel,DatingApp.DataAccessLayer.Models.Profile>());
             var mapper = new Mapper(config);
             var profileBL = mapper.Map<DatingApp.DataAccessLayer.Models.Profile>(model);
             _unitOfWork.Profile.Add(profileBL);
             _unitOfWork.Save();
+            return profileBL.Id;
         }
         public List<ProfileModel> GetAll()
         {

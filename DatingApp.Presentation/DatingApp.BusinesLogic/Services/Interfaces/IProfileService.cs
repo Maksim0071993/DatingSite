@@ -9,7 +9,7 @@ namespace DatingApp.BusinesLogic.Services.Interfaces
 {
     public interface IProfileService
     {
-        void CreateProfile(ProfileModel model);
+        int CreateProfile(ProfileModel model);
         List<ProfileModel> GetAll();
         ProfileModel GetById(int id);
     }

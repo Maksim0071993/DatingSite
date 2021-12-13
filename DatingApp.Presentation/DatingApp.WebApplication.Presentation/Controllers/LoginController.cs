@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DatingApp.WebApplication.Presentation.Controllers
@@ -31,7 +32,8 @@ namespace DatingApp.WebApplication.Presentation.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Index([FromForm] LoginViewModel model)
-        {          
+        {
+            
             var result = _userService.SearchUser(model.Email, model.UserPassword);
             if (result != null)
             {
@@ -50,8 +52,7 @@ namespace DatingApp.WebApplication.Presentation.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userId.ToString()),
-                //new Claim(ClaimTypes.NameIdentifier, userId.ToString())
+                new Claim(ClaimsIdentity.DefaultNameClaimType, userId.ToString())
             };
 
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

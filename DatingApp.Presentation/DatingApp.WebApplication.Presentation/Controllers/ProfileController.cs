@@ -23,8 +23,6 @@ namespace DatingApp.WebApplication.Presentation.Controllers
         public IActionResult Index(int id)
         {
             var city = _lookupValueService.GetByCode("City").ToArray();
-            SelectList cities = new SelectList(city, "CityId");
-            ViewBag.city = cities;
             var profile = _profileService.GetById(id);
             //var convertResult = Convert.FromBase64String(profile.DataImage);
             //profile.DataImage = convertResult;
@@ -42,17 +40,15 @@ namespace DatingApp.WebApplication.Presentation.Controllers
             return View("List", profiles.ToList());
         }
         
+        
         [HttpGet]
         public IActionResult Create()
         {
-            if (User.Identity.IsAuthenticated)
-            {     
-                    return RedirectToAction("Index", "Chat");       
-            }
-            else if ()
+            if (!User.Identity.IsAuthenticated)
             {
-
+                return RedirectToAction("Index", "Registration");
             }
+
             var cities = _lookupValueService.GetByCode("City").ToArray();
             ViewBag.Cities = cities;
             return View();
@@ -71,17 +67,18 @@ namespace DatingApp.WebApplication.Presentation.Controllers
             var mapper = new Mapper(config);
             model.Id = int.Parse(User.Identity.Name);
             var result = mapper.Map<DatingApp.BusinesLogic.BusinessModel.ProfileModel>(model);
-            //if (model.FirstName == null || model.Age == 0)
+            
+            //if ( model.Age == 0 )
             //{
-            //    ModelState.AddModelError("", "Поля 'First Name' и 'Age' должны быть заполнены");
+            //    ModelState.AddModelError("", "Поле 'Age' должны быть заполнены");
             //    return View();
             //}
             //else
             //{
-            //    _profileService.CreateProfile(model);
+            int userId = _profileService.CreateProfile(model);
             //}
 
-            return RedirectToAction("Chat", "Chat");
+            return RedirectToAction("SendMessage", "Chat");
         }
     }
 }

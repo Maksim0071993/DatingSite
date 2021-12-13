@@ -1,0 +1,50 @@
+﻿
+@model List<DatingApp.BusinesLogic.BusinessModel.MessageModel>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
+    <script>
+        const hubConnection = new signalR.HubConnectionBuilder()
+            .withUrl("/chat")
+            .build();
+
+        hubConnection.on("Send", function (message, name) {
+            
+            var table = document.getElementById('myTable');
+            var tr = document.createElement('tr');
+            tr.classList.add("container");
+            var td1 = document.createElement('td');
+            var td2 = document.createElement('td');
+            var td3 = document.createElement('td');
+                table.appendChild(tr);
+            tr.appendChild(td1);
+            td1.innerText = name;
+            tr.appendChild(td2);
+            td2.innerText = message;
+            tr.appendChild(td3);
+            
+
+        });
+
+
+        hubConnection.start();
+    </script>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Имя отправителя</th>
+                        <th scope="col">Текст сообщения</th>
+                        <th scope="col"><th/>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    @foreach (var name in Model)
+                    {
+                    <tr class="container">
+                        <td>@name.SenderName</td>
+
+                        <td>@name.TextMessage</td>
+                        <td><a href="https://localhost:44333/Chat/SendMessage"> Отправить сообщение</a></td>
+                    </tr>
+                     }
+                    </tbody>
+            </table>
+        

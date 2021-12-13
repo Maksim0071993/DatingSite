@@ -1,19 +1,26 @@
 ﻿@model ProfileModel
+    <html>
+    <head>
+        <title> Index </title>
+    </head>
+    <body>
 
-<h2>Profile</h2>
-<hr> @Model.FirstName  @Model.LastName , @Model.Age
-<hr>
-<hr> <p style="color:black; font-size:14px"> <i>Sex:</p> @Model.Sex
-<hr>
-<p style="color:black; font-size:14px"> <i>About me:</i></p>  @Model.AboutMe
-<hr>
-<div>
-    <hr> <p style="color:black; font-size:14px"> <i>Orientations:</p> @Model.Orientation
-</div>
-<hr>
-<p style="color:black; font-size:14px"> <i>City:</i></p>  @Model.City
-
-@*@if (Model.DataImage != null)
-{
-    <img src="@Model.DataImage" style="width:150px;height:200px;" />
-}*@
+        <h2>Профиль</h2>
+        <hr> @Model.FirstName  @Model.LastName , @Model.Age
+        <hr>
+        <hr>
+        <p style="color:black; font-size:14px"> <i> Пол: </i></p> @Model.Sex
+        <hr>
+        <p style="color:black; font-size:14px"> <i> О себе:</i></p>  @Model.AboutMe
+        <hr>
+        <div>
+            <hr> <p style="color:black; font-size:14px"> <i> Ориентация: </i></p> @Model.Orientation
+        </div>
+        <hr>
+        <p style="color:black; font-size:14px"> <i> Город:</i></p>  @Model.City
+        @*@if (Model.DataImage != null)
+            {
+                <img src="@Model.DataImage" style="width:150px;height:200px;" />
+            }*@
+    </body>
+</html>

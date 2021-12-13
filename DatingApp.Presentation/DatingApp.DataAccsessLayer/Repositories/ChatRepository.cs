@@ -27,6 +27,10 @@ namespace DatingApp.DataAccessLayer.Repositories
             var chats = _datingAppWinFormsContext.Chats.Include(p => p.Recepient).Include(p => p.Sender).Where(func).ToList();
             return chats;
         }
-
+        public List<Chat> GetAll()
+        {
+            var list = _datingAppWinFormsContext.Chats.ToList();
+            return list;
+        }
     }
 }

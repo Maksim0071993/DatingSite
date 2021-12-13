@@ -11,5 +11,6 @@ namespace DatingApp.DataAccessLayer.Repositories.Interfaces
     {
         public List<Chat> Get(Func<Chat, bool> func);
         public void Add(Chat chat);
+        public List<Chat> GetAll();
     }
 }

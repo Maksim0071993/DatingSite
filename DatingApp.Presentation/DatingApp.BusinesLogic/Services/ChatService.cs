@@ -21,7 +21,7 @@ namespace DatingApp.BusinesLogic.Services
         }
         public void SendMessage(string  message, ProfileModel recipientId, ProfileModel senderId)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap< Chat, ChatModel>());           
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ChatModel, Chat >());           
             var mapper = new Mapper(config);
             var messMod = new ChatModel { TextMessage = message, RecepientId = recipientId.Id, SenderId = senderId.Id };
             var chatBL = mapper.Map<Chat>(messMod);
@@ -51,6 +51,15 @@ namespace DatingApp.BusinesLogic.Services
                 TextMessage = p.TextMessage
             }).ToList();
         }
+        //public List<ProfileModel> GetAllRecepient ()
+        //{
+        //    var config = new MapperConfiguration(cfg => cfg.CreateMap<DatingApp.DataAccessLayer.Models.Chat, ChatModel>());
+        //    var mapper = new Mapper(config);
+        //    var profileModels = _unitOfWork.Profile.GetAll().ToList();
+        //    var result = profileModels.Select(p => mapper.Map<ChatModel>(p)).ToList();
+
+        //    return result;
+        //}
         
     }
 }

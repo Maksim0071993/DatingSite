@@ -1,16 +1,22 @@
-﻿<h2>Login</h2>
+﻿<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Вход на сайт</h2>
 
-
-<form method="post" action=" /Login/Index">
-    <div class="validation" asp-validation-summary="ModelOnly"></div>
-    <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Email</label>
-        <input type="text" name="@nameof(RegistrationViewModel.Email)" class="form-control" id="inputEmail4">
-    </div>
-    <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Password</label>
-        <input type="password" name="@nameof(RegistrationViewModel.UserPassword)" class="form-control" id="inputPassword4">
-    </div>
-    <br />
-    <p><input type="submit" value="Login" class="btn btn-primary"></p>
-</form>
+    <form method="post" action=" /Login/Index">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input required="required" type="text" name="@nameof(RegistrationViewModel.Email)" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Пароль</label>
+            <input required="required" type="password" name="@nameof(RegistrationViewModel.UserPassword)" class="form-control" id="inputPassword4">
+        </div>
+        <br />
+        <p><input type="submit" value="Войти" class="btn btn-primary"></p>
+    </form>
+</body>
+</html>

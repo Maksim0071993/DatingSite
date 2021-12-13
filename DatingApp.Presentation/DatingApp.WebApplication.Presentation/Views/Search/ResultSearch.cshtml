@@ -1,17 +1,36 @@
 ﻿
 @model List<DatingApp.BusinesLogic.BusinessModel.ProfileModel>
-
-<div class="row mt-5 mb-2">
-    @{
-        foreach (var profile in Model)
-        {
-            <div class="col-lg-4">
-                <img class="img-thumbnail" alt="@profile.FirstName" />
-                <h2>@profile.FirstName</h2>
-                <p>@profile.LastName</p>
-                <p>@profile.Age</p>
-                <p><a class="btn btn-warning" href="/Profile/@profile.Id">Show</a></p>
-            </div>
-        }
-    }
-</div>
+    <html>
+    <head>
+        <title> Result Search</title>
+    </head>
+    <body>
+        <div class="row mt-5 mb-2">
+            @{
+                foreach (var profile in Model)
+                {
+                    <div class="col-lg-4">
+                        @if(profile.DataImage == null)
+                {
+                    if(profile.Sex == DatingApp.Common.Sex.Male)
+                    {
+                                <img src="~/Images/male.jpg" height="190"/>
+                            }
+                            else
+                    {
+                        <img src="~/Images/female.jpg" />
+                    }
+                        }
+                else { 
+                        <img class="img-thumbnail" alt="@profile.FirstName" height="190" />
+                        }
+                        <h2>@profile.FirstName</h2>
+                        <p>@profile.LastName</p>
+                        <p>@profile.Age</p>
+                        <p><a class="btn btn-primary" href="/Profile/@profile.Id">Показать</a></p>
+                    </div>
+                }
+            }
+        </div>
+    </body>
+</html>

@@ -1,24 +1,34 @@
-﻿<h2>Registration</h2>
-<br />
-<br />
+﻿<html>
+<head>
+    <title>Registration</title>
+</head>
+<body>
+    <h2>Регистрация</h2>
+    <br />
+    <br />
+    <form method="post" action=" /Registration/Index">
 
-<form method="post" action=" /Registration/Index">
-
-    <div class="validation" asp-validation-summary="ModelOnly"></div>
-    <div class="col-md-6">
-        <label class="form-label">Email</label><br />
-        <input type="text" name="@nameof(RegistrationViewModel.Email)" /> <br />
-    </div>
-    <br />
-    <div class="col-md-6">
-        <label class="form-label">Password</label><br />
-        <input type="text" name="@nameof(RegistrationViewModel.UserPassword)" /> <br />
-    </div>
-    <br />
-    <div class="col-md-6">
-        <label class="form-label">Confrim your password</label><br />
-        <input type="text" name="@nameof(RegistrationViewModel.ConfirmPassword)" /><br />
-    </div>
-    <br />
-    <p><input type="submit" class="btn btn-primary"></p>
-</form>
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <p>
+            <div class="col-md-6">
+                <label class="form-label">Email</label><br />
+                <input  type="text" placeholder="Введите Email" name="@nameof(RegistrationViewModel.Email)"  class=" form-control"/> <br />
+            </div>
+        </p>
+        <p>
+            <div class="col-md-6">
+                <label class="form-label">Пароль</label><br />
+                <input  type="password"placeholder="Введите пароль" name="@nameof(RegistrationViewModel.UserPassword)" class=" form-control" /> <br />
+            </div>
+        </p>
+        <p>
+            <div class="col-md-6">
+                <label class="form-label">Подтверждение пароля</label><br />
+                <input required ="required" type="password" placeholder="Подтвердите пароль" name="@nameof(RegistrationViewModel.ConfirmPassword)"class=" form-control" /><br />
+            </div>
+        </p>
+        
+        <p><input type="submit" class="btn-primary" value="Зарегистрироваться"></p>
+    </form>
+</body>
+</html>
